@@ -9,7 +9,7 @@ Six brands. Six different Instagram strategies. One honest verdict on what's wor
 
 This is a judgment-based brand audit — not a data dump. I went through the Instagram pages of six real brands, analyzed what they're doing, graded them on a 10-point scale across five criteria, and wrote 4–5 paragraphs of real analysis in my own voice. Every grade is defensible. Every observation is mine.
 
-👉 **[View the Live Audit](https://yonisv.github.io/Instagram-Audit-/)**
+👉 **[View the Live Audit](https://yonisv.github.io/Instagram-Audit/)**
 
 ---
 
