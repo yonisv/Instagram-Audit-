@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Instagram Strategy Audit 2026 — Yonis Velasquez</title>
+<style>
+/* ─── RESET & BASE ───────────────────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  font-family:-apple-system,"SF Pro Text",system-ui,sans-serif;
+  font-weight:400;font-size:17px;line-height:1.47;
+  letter-spacing:-0.374px;
+  background:#000;color:#f5f5f7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ─── TOKENS ─────────────────────────────────────────────────── */
+:root{
+  --blue:#0066cc;
+  --blue-focus:#0071e3;
+  --blue-dark:#2997ff;
+  --ink:#1d1d1f;
+  --ink-80:#333;
+  --ink-48:#7a7a7a;
+  --white:#fff;
+  --canvas:#fff;
+  --parchment:#f5f5f7;
+  --pearl:#fafafc;
+  --tile-1:#272729;
+  --tile-2:#2a2a2c;
+  --tile-3:#252527;
+  --black:#000;
+  --hairline:#e0e0e0;
+  --divider:#f0f0f0;
+}
+
+/* ─── NAV ────────────────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(0,0,0,0.88);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  height:52px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.nav-logo{
+  font-family:-apple-system,"SF Pro Display",system-ui,sans-serif;
+  font-size:17px;font-weight:600;color:#fff;
+  letter-spacing:-0.28px;text-decoration:none;
+}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{
+  color:rgba(255,255,255,0.72);text-decoration:none;
+  font-size:14px;font-weight:400;letter-spacing:-0.224px;
+  padding:0 14px;line-height:52px;
+  transition:color .2s;
+}
+.nav-links a:hover{color:#fff;}
+.nav-cta{
+  background:var(--blue);color:#fff;
+  font-size:14px;font-weight:400;
+  padding:8px 18px;border-radius:9999px;
+  text-decoration:none;
+  transition:background .2s,transform .15s;
+}
+.nav-cta:hover{background:var(--blue-focus);}
+.nav-cta:active{transform:scale(0.95);}
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+.hero{
+  background:var(--black);
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:120px 48px 80px;
+  position:relative;overflow:hidden;
+}
+.hero-ig-icon{margin-bottom:24px;opacity:0;transform:translateY(20px);animation:fadeUp .8s .1s forwards;}
+.hero-eyebrow{
+  font-family:-apple-system,"SF Pro Text",system-ui,sans-serif;
+  font-size:21px;font-weight:600;letter-spacing:.231px;
+  color:var(--blue-dark);margin-bottom:12px;
+  opacity:0;transform:translateY(20px);animation:fadeUp .8s .2s forwards;
+}
+.hero h1{
+  font-family:-apple-system,"SF Pro Display",system-ui,sans-serif;
+  font-size:clamp(40px,6vw,80px);font-weight:600;
+  letter-spacing:-0.28px;line-height:1.05;
+  color:#fff;max-width:900px;margin-bottom:20px;
+  opacity:0;transform:translateY(20px);animation:fadeUp .8s .3s forwards;
+}
+.hero-sub{
+  font-size:clamp(19px,2.5vw,28px);font-weight:400;
+  line-height:1.14;letter-spacing:.196px;
+  color:rgba(255,255,255,0.68);
+  max-width:640px;margin-bottom:40px;
+  opacity:0;transform:translateY(20px);animation:fadeUp .8s .4s forwards;
+}
+.hero-thesis{
+  font-size:19px;font-weight:400;
+  font-style:italic;
+  color:rgba(255,255,255,0.55);
+  max-width:680px;margin-bottom:48px;
+  line-height:1.5;
+  opacity:0;transform:translateY(20px);animation:fadeUp .8s .5s forwards;
+}
+.hero-btns{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  opacity:0;transform:translateY(20px);animation:fadeUp .8s .6s forwards;
+}
+.btn-primary{
+  background:var(--blue);color:#fff;
+  font-size:18px;font-weight:300;
+  padding:14px 28px;border-radius:9999px;
+  text-decoration:none;
+  transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:var(--blue-focus);}
+.btn-primary:active{transform:scale(0.95);}
+.btn-ghost{
+  background:transparent;color:var(--blue-dark);
+  font-size:18px;font-weight:400;
+  padding:14px 28px;border-radius:9999px;
+  text-decoration:none;
+  border:1.5px solid rgba(255,255,255,0.2);
+  transition:border-color .2s,transform .15s;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.4);}
+.btn-ghost:active{transform:scale(0.95);}
+.hero-stats{
+  display:flex;gap:64px;margin-top:64px;
+  justify-content:center;flex-wrap:wrap;
+  opacity:0;transform:translateY(20px);animation:fadeUp .8s .7s forwards;
+}
+.hero-stat-num{
+  font-family:-apple-system,"SF Pro Display",system-ui,sans-serif;
+  font-size:40px;font-weight:600;letter-spacing:0;
+  color:#fff;display:block;line-height:1;
+}
+.hero-stat-lbl{font-size:14px;color:rgba(255,255,255,0.48);margin-top:6px;letter-spacing:-0.224px;}
+
+/* ─── RANKING STRIP ──────────────────────────────────────────── */
+.ranking-strip{
+  background:var(--tile-1);
+  display:flex;overflow-x:auto;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  scrollbar-width:none;
+}
+.ranking-strip::-webkit-scrollbar{display:none;}
+.rank-item{
+  flex-shrink:0;
+  display:flex;align-items:center;gap:10px;
+  padding:18px 28px;
+  border-right:1px solid rgba(255,255,255,0.06);
+  text-decoration:none;
+  transition:background .15s;
+  cursor:pointer;
+}
+.rank-item:hover{background:var(--tile-2);}
+.rank-num{font-size:11px;font-weight:600;color:rgba(255,255,255,0.3);letter-spacing:1px;}
+.rank-name{font-size:15px;font-weight:600;color:#fff;}
+.rank-badge{
+  font-size:11px;font-weight:600;
+  padding:3px 9px;border-radius:9999px;
+  letter-spacing:.3px;
+}
+
+/* ─── SECTION SHARED ─────────────────────────────────────────── */
+.tile-dark{background:var(--tile-1);}
+.tile-dark2{background:var(--tile-2);}
+.tile-dark3{background:var(--tile-3);}
+.tile-light{background:var(--canvas);}
+.tile-parchment{background:var(--parchment);}
+.tile-black{background:var(--black);}
+
+/* ─── BRAND SECTION ──────────────────────────────────────────── */
+.brand-section{
+  padding:100px 0 0;
+  position:relative;
+}
+.brand-wrap{
+  max-width:1200px;margin:0 auto;
+  padding:0 48px;
+}
+.brand-header{
+  display:grid;grid-template-columns:1fr 420px;
+  gap:60px;align-items:start;
+  margin-bottom:60px;
+}
+.brand-eyebrow{
+  font-size:21px;font-weight:600;letter-spacing:.231px;
+  margin-bottom:12px;
+}
+.brand-name{
+  font-family:-apple-system,"SF Pro Display",system-ui,sans-serif;
+  font-size:clamp(32px,5vw,56px);font-weight:600;
+  letter-spacing:-0.28px;line-height:1.07;
+  margin-bottom:10px;
+}
+.brand-handle{
+  font-size:21px;font-weight:400;letter-spacing:.196px;
+  line-height:1.14;margin-bottom:28px;
+}
+.brand-score-row{
+  display:flex;align-items:baseline;gap:8px;margin-bottom:28px;
+}
+.brand-score-big{
+  font-family:-apple-system,"SF Pro Display",system-ui,sans-serif;
+  font-size:72px;font-weight:600;line-height:1;letter-spacing:-2px;
+}
+.brand-score-denom{font-size:28px;font-weight:400;color:rgba(255,255,255,0.4);}
+.brand-score-label{
+  font-size:14px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
+  padding:5px 12px;border-radius:9999px;margin-left:8px;
+  align-self:center;
+}
+.brand-stats-row{
+  display:flex;gap:16px;flex-wrap:wrap;margin-bottom:32px;
+}
+.brand-stat{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;padding:14px 18px;min-width:90px;
+}
+.brand-stat-v{
+  font-size:17px;font-weight:600;color:#fff;display:block;
+  font-feature-settings:"tnum";
+}
+.brand-stat-l{font-size:12px;color:rgba(255,255,255,0.45);margin-top:3px;letter-spacing:.3px;}
+.brand-analysis{
+  font-size:17px;font-weight:400;line-height:1.7;
+  letter-spacing:-0.374px;
+}
+.brand-analysis p{margin-bottom:18px;}
+.brand-analysis p:last-child{margin-bottom:0;}
+.brand-analysis strong{font-weight:600;}
+
+/* RIGHT PANEL */
+.brand-right{}
+.logo-frame{
+  border-radius:18px;overflow:hidden;
+  margin-bottom:20px;
+  display:flex;align-items:center;justify-content:center;
+  height:260px;
+  position:relative;
+}
+.logo-frame img{
+  max-width:72%;max-height:72%;
+  object-fit:contain;
+  filter:drop-shadow(0 4px 24px rgba(0,0,0,0.3));
+  transition:transform .4s ease;
+}
+.logo-frame:hover img{transform:scale(1.06);}
+.logo-overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,0.7));
+  padding:24px 16px 14px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+}
+.logo-handle{font-size:13px;font-weight:600;color:#fff;}
+.logo-followers{font-size:12px;color:rgba(255,255,255,0.55);}
+
+/* SCORECARD */
+.scorecard{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:18px;padding:20px;margin-bottom:20px;
+}
+.scorecard-title{
+  font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);margin-bottom:16px;
+}
+.score-row{
+  display:flex;align-items:center;
+  padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.score-row:last-child{border:none;}
+.score-label{font-size:13px;color:rgba(255,255,255,0.65);min-width:140px;}
+.score-track{
+  flex:1;height:3px;background:rgba(255,255,255,0.08);
+  border-radius:2px;overflow:hidden;margin:0 12px;
+}
+.score-fill{height:100%;border-radius:2px;background:var(--blue-dark);transition:width .8s ease;}
+.score-val{font-size:13px;font-weight:600;color:#fff;min-width:20px;text-align:right;}
+.brand-links{display:flex;gap:10px;flex-wrap:wrap;}
+.link-ig{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue);color:#fff;
+  font-size:14px;font-weight:400;letter-spacing:-0.224px;
+  padding:10px 18px;border-radius:9999px;text-decoration:none;
+  transition:background .2s,transform .15s;
+}
+.link-ig:hover{background:var(--blue-focus);}
+.link-ig:active{transform:scale(0.95);}
+.link-web{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:rgba(255,255,255,0.6);
+  font-size:14px;font-weight:400;
+  padding:10px 18px;border-radius:9999px;text-decoration:none;
+  border:1px solid rgba(255,255,255,0.15);
+  transition:border-color .2s,color .2s,transform .15s;
+}
+.link-web:hover{border-color:rgba(255,255,255,0.3);color:#fff;}
+.link-web:active{transform:scale(0.95);}
+
+/* VERDICT BAND */
+.verdict-band{
+  padding:48px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  margin-top:60px;
+}
+.verdict-eyebrow{
+  font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);margin-bottom:10px;
+}
+.verdict-text{
+  font-size:21px;font-weight:400;letter-spacing:.231px;line-height:1.19;
+  color:rgba(255,255,255,0.8);max-width:800px;
+}
+.verdict-text strong{color:#fff;font-weight:600;}
+
+/* GOLD BADGE */
+.gold-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,214,10,0.12);
+  border:1px solid rgba(255,214,10,0.25);
+  color:#ffd60a;
+  font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  padding:5px 12px;border-radius:9999px;margin-bottom:16px;
+}
+
+/* ─── TAKEAWAYS ──────────────────────────────────────────────── */
+.takeaways{padding:100px 48px;background:var(--tile-3);}
+.section-eyebrow{
+  font-size:21px;font-weight:600;letter-spacing:.231px;
+  color:var(--blue-dark);margin-bottom:12px;
+}
+.section-title{
+  font-family:-apple-system,"SF Pro Display",system-ui,sans-serif;
+  font-size:clamp(32px,5vw,56px);font-weight:600;
+  letter-spacing:-0.28px;line-height:1.07;
+  color:#fff;margin-bottom:16px;
+}
+.section-sub{
+  font-size:17px;font-weight:400;line-height:1.47;
+  letter-spacing:-0.374px;color:rgba(255,255,255,0.6);
+  max-width:640px;margin-bottom:64px;
+}
+.takeaway-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;margin-bottom:2px;
+}
+.takeaway-card{
+  background:var(--tile-2);
+  padding:36px 32px;
+  transition:background .2s;
+}
+.takeaway-card:hover{background:var(--tile-1);}
+.takeaway-num{
+  font-family:-apple-system,"SF Pro Display",system-ui,sans-serif;
+  font-size:48px;font-weight:600;
+  color:rgba(255,255,255,0.06);line-height:1;margin-bottom:16px;
+}
+.takeaway-card h3{
+  font-size:21px;font-weight:600;letter-spacing:.231px;
+  color:#fff;margin-bottom:10px;
+}
+.takeaway-card p{
+  font-size:17px;font-weight:400;line-height:1.47;
+  letter-spacing:-0.374px;color:rgba(255,255,255,0.55);
+}
+
+/* COMPARISON TABLE */
+.comparison-wrap{background:var(--tile-2);padding:0;}
+.comp-table{width:100%;border-collapse:collapse;}
+.comp-table th{
+  background:rgba(255,255,255,0.04);
+  padding:14px 24px;text-align:left;
+  font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.comp-table td{
+  padding:16px 24px;
+  font-size:15px;font-weight:400;
+  letter-spacing:-0.224px;
+  color:rgba(255,255,255,0.7);
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+.comp-table tr:last-child td{border:none;}
+.comp-table tr:hover td{background:rgba(255,255,255,0.02);}
+.comp-brand{font-weight:600;color:#fff;}
+.comp-score{font-weight:700;}
+
+/* ─── AUTHOR ─────────────────────────────────────────────────── */
+.author-section{
+  background:var(--parchment);
+  padding:100px 48px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;
+}
+.author-eyebrow{
+  font-size:21px;font-weight:600;letter-spacing:.231px;
+  color:var(--blue);margin-bottom:12px;
+}
+.author-name{
+  font-family:-apple-system,"SF Pro Display",system-ui,sans-serif;
+  font-size:clamp(28px,4vw,48px);font-weight:600;
+  letter-spacing:-0.28px;color:var(--ink);margin-bottom:8px;
+}
+.author-title{font-size:21px;font-weight:400;letter-spacing:.196px;color:var(--ink-48);margin-bottom:20px;}
+.author-bio{
+  font-size:17px;font-weight:400;line-height:1.47;
+  letter-spacing:-0.374px;color:var(--ink-80);margin-bottom:28px;
+}
+.author-links{display:flex;gap:10px;flex-wrap:wrap;}
+.author-link{
+  font-size:17px;font-weight:400;
+  color:var(--blue);text-decoration:none;
+  display:inline-flex;align-items:center;gap:4px;
+  padding:8px 16px;border-radius:9999px;
+  border:1px solid var(--blue);
+  transition:background .2s,color .2s,transform .15s;
+}
+.author-link:hover{background:var(--blue);color:#fff;}
+.author-link:active{transform:scale(0.95);}
+.work-card{
+  background:var(--canvas);
+  border:1px solid var(--hairline);
+  border-radius:18px;overflow:hidden;
+}
+.work-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 24px;
+  border-bottom:1px solid var(--hairline);
+  text-decoration:none;
+  transition:background .15s;
+}
+.work-item:last-child{border:none;}
+.work-item:hover{background:var(--parchment);}
+.work-title{font-size:17px;font-weight:600;color:var(--ink);}
+.work-sub{font-size:14px;color:var(--ink-48);margin-top:2px;}
+.work-arrow{font-size:18px;color:var(--blue);}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer{
+  background:var(--parchment);
+  padding:32px 48px;
+  border-top:1px solid var(--hairline);
+  text-align:center;
+}
+footer p{font-size:12px;color:var(--ink-48);letter-spacing:-0.12px;}
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes barGrow{
+  from{width:0;}
+  to{width:var(--target-width);}
+}
+
+/* Scroll-triggered reveal */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:.1s;}
+.reveal-delay-2{transition-delay:.2s;}
+.reveal-delay-3{transition-delay:.3s;}
+.reveal-delay-4{transition-delay:.4s;}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media(max-width:1024px){
+  .brand-header{grid-template-columns:1fr;gap:40px;}
+  .author-section{grid-template-columns:1fr;gap:48px;padding:60px 32px;}
+  .takeaway-grid{grid-template-columns:1fr 1fr;}
+  nav{padding:0 24px;}
+  .nav-links{display:none;}
+}
+@media(max-width:640px){
+  .hero{padding:100px 24px 60px;}
+  .brand-wrap{padding:0 24px;}
+  .brand-section{padding:60px 0 0;}
+  .verdict-band{padding:32px 24px;}
+  .takeaways{padding:60px 24px;}
+  .takeaway-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:32px;}
+  .ranking-strip .rank-item{padding:14px 20px;}
+  footer{padding:24px;}
+  .comp-table th,.comp-table td{padding:12px 16px;font-size:13px;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Yonis Velasquez</a>
+  <ul class="nav-links">
+    <li><a href="#redbull">Red Bull</a></li>
+    <li><a href="#dunkin">Dunkin'</a></li>
+    <li><a href="#chickfila">Chick-fil-A</a></li>
+    <li><a href="#celsius">Celsius</a></li>
+    <li><a href="#owala">Owala</a></li>
+    <li><a href="#costa">Costa</a></li>
+    <li><a href="#takeaways">Takeaways</a></li>
+  </ul>
+  <a href="#takeaways" class="nav-cta">See Takeaways</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ig-icon">
+    <svg width="52" height="52" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="ig" cx="30%" cy="107%" r="150%">
+          <stop offset="0%" stop-color="#fdf497"/>
+          <stop offset="5%" stop-color="#fdf497"/>
+          <stop offset="45%" stop-color="#fd5949"/>
+          <stop offset="60%" stop-color="#d6249f"/>
+          <stop offset="90%" stop-color="#285AEB"/>
+        </radialGradient>
+      </defs>
+      <rect x="1" y="1" width="22" height="22" rx="6" fill="url(#ig)"/>
+      <circle cx="12" cy="12" r="5" stroke="white" stroke-width="2" fill="none"/>
+      <circle cx="17.8" cy="6.2" r="1.4" fill="white"/>
+    </svg>
+  </div>
+  <p class="hero-eyebrow">Instagram Strategy Audit · 2026</p>
+  <h1>Who's Actually Winning on Instagram?</h1>
+  <p class="hero-sub">Six brands. Six different strategies. One honest verdict on what's working and why.</p>
+  <p class="hero-thesis">"The best Instagram strategies aren't about follower count. They're about understanding exactly who you're talking to — and refusing to talk to anyone else."</p>
+  <div class="hero-btns">
+    <a href="#redbull" class="btn-primary">Start with Red Bull</a>
+    <a href="#takeaways" class="btn-ghost">Jump to Takeaways</a>
+  </div>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">6</span><p class="hero-stat-lbl">Brands Audited</p></div>
+    <div><span class="hero-stat-num">38M+</span><p class="hero-stat-lbl">Combined Followers</p></div>
+    <div><span class="hero-stat-num">10</span><p class="hero-stat-lbl">Point Scale</p></div>
+    <div><span class="hero-stat-num">2026</span><p class="hero-stat-lbl">Published</p></div>
+  </div>
+</section>
+
+<!-- RANKING STRIP -->
+<div class="ranking-strip">
+  <a href="#redbull" class="rank-item"><span class="rank-num">01</span><span class="rank-name">Red Bull</span><span class="rank-badge" style="background:rgba(76,175,125,.15);color:#4caf7d;">10/10</span></a>
+  <a href="#dunkin" class="rank-item"><span class="rank-num">02</span><span class="rank-name">Dunkin'</span><span class="rank-badge" style="background:rgba(255,159,10,.15);color:#ff9f0a;">8/10</span></a>
+  <a href="#costa" class="rank-item"><span class="rank-num">03</span><span class="rank-name">Costa</span><span class="rank-badge" style="background:rgba(255,159,10,.1);color:#ff9f0a;">7/10</span></a>
+  <a href="#owala" class="rank-item"><span class="rank-num">04</span><span class="rank-name">Owala</span><span class="rank-badge" style="background:rgba(255,159,10,.08);color:#c9a84c;">6/10</span></a>
+  <a href="#celsius" class="rank-item"><span class="rank-num">05</span><span class="rank-name">Celsius</span><span class="rank-badge" style="background:rgba(255,159,10,.06);color:#c9a84c;">5/10</span></a>
+  <a href="#chickfila" class="rank-item"><span class="rank-num">06</span><span class="rank-name">Chick-fil-A</span><span class="rank-badge" style="background:rgba(232,93,74,.15);color:#e85d4a;">3/10</span></a>
+</div>
+
+<!-- RED BULL -->
+<section class="brand-section tile-black" id="redbull">
+  <div class="brand-wrap">
+    <div class="brand-header">
+      <div class="reveal">
+        <div class="gold-badge">⭐ The Gold Standard</div>
+        <p class="brand-eyebrow" style="color:var(--blue-dark);">Brand 01 · The Trailblazer</p>
+        <h2 class="brand-name" style="color:#fff;">Red Bull</h2>
+        <p class="brand-handle" style="color:rgba(255,255,255,0.5);">"Watch the World Of Red Bull" · @redbull</p>
+        <div class="brand-score-row">
+          <span class="brand-score-big" style="color:#4caf7d;">10</span>
+          <span class="brand-score-denom">/10</span>
+          <span class="brand-score-label" style="background:rgba(76,175,125,.15);color:#4caf7d;">Elite</span>
+        </div>
+        <div class="brand-stats-row">
+          <div class="brand-stat"><span class="brand-stat-v">32.7M</span><span class="brand-stat-l">Followers</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">11,410</span><span class="brand-stat-l">Posts</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">2,128</span><span class="brand-stat-l">Following</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">Media Co.</span><span class="brand-stat-l">Strategy</span></div>
+        </div>
+        <div class="brand-analysis" style="color:rgba(255,255,255,0.72);">
+          <p>I want to start here because Red Bull is the reason this audit exists. Before you study any other brand's Instagram, you need to understand what Red Bull did — because they didn't just get good at social media, <strong>they redefined what a brand account can be.</strong></p>
+          <p>Notice their bio says "Watch the World Of Red Bull." Not "Try our energy drink." They don't sell the product on Instagram — they sell a worldview. Landing a plane on a moving train. A helicopter doing backflips. Athletes pushing the edge of what's possible. The can shows up occasionally, but it's never the point.</p>
+          <p>What Red Bull did was build a <strong>media company inside a beverage brand.</strong> They have Red Bull Media House producing documentaries, films, and original content. Instagram is just one distribution channel in a much bigger ecosystem. With 11,410 posts, they've been operating at the pace of a news organization for years.</p>
+          <p>The caption writing alone is a masterclass — "what happened here? a) too steep b) the brakes did not work c) took the wrong way." That multiple-choice format generates comments without begging for engagement. Every hook is engineered to stop the scroll. <strong>This is the gold standard. Everything else in this audit is measured against Red Bull.</strong></p>
+        </div>
+      </div>
+      <div class="brand-right reveal reveal-delay-2">
+        <div style="border-radius:18px;overflow:hidden;margin-bottom:20px;background:linear-gradient(135deg,#c8102e 0%,#1a0505 100%);padding:2px;">
+  <div style="border-radius:16px;background:#0d0d0d;padding:28px 24px;">
+
+    <!-- Top row: handle + strategy -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:.5px;">@redbull</span>
+      <span style="font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;">Media Company</span>
+    </div>
+
+    <!-- Big score -->
+    <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:6px;">
+      <span style="font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;font-size:80px;font-weight:600;line-height:1;letter-spacing:-3px;color:#4caf7d;">10</span>
+      <span style="font-size:24px;font-weight:400;color:rgba(255,255,255,0.25);">/10</span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#4caf7d;background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;margin-left:4px;align-self:center;">ELITE</span>
+    </div>
+
+    <!-- Benchmark bar -->
+    <div style="margin-bottom:24px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.5px;">vs Red Bull benchmark</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);">100%</span>
+      </div>
+      <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+        <div style="height:100%;width:100%;background:linear-gradient(90deg,#c8102e,#4caf7d);border-radius:2px;transition:width .8s ease;"></div>
+      </div>
+    </div>
+
+    <!-- Stats grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">32.7M</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Followers</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">11,410</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Posts</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">2,128</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Following</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+        <div class="scorecard">
+          <p class="scorecard-title">Score Breakdown</p>
+          <div class="score-row"><span class="score-label">Content quality</span><div class="score-track"><div class="score-fill" style="width:100%;"></div></div><span class="score-val">10</span></div>
+          <div class="score-row"><span class="score-label">Audience understanding</span><div class="score-track"><div class="score-fill" style="width:100%;"></div></div><span class="score-val">10</span></div>
+          <div class="score-row"><span class="score-label">Brand consistency</span><div class="score-track"><div class="score-fill" style="width:100%;"></div></div><span class="score-val">10</span></div>
+          <div class="score-row"><span class="score-label">Community</span><div class="score-track"><div class="score-fill" style="width:90%;"></div></div><span class="score-val">9</span></div>
+          <div class="score-row"><span class="score-label">Strategic vision</span><div class="score-track"><div class="score-fill" style="width:100%;"></div></div><span class="score-val">10</span></div>
+        </div>
+        <div class="brand-links">
+          <a href="https://www.instagram.com/redbull/" target="_blank" class="link-ig">View @redbull ↗</a>
+          <a href="https://www.redbull.com" target="_blank" class="link-web">redbull.com ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="verdict-band">
+    <div class="brand-wrap">
+      <p class="verdict-eyebrow">Bottom Line</p>
+      <p class="verdict-text">Red Bull doesn't market on Instagram — they <strong>publish</strong> on it. Strip the logo from every post and the content still performs. <strong>That's how you know it's real.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- DUNKIN -->
+<section class="brand-section tile-dark" id="dunkin">
+  <div class="brand-wrap">
+    <div class="brand-header">
+      <div class="reveal">
+        <p class="brand-eyebrow" style="color:var(--blue-dark);">Brand 02 · Best Community Voice</p>
+        <h2 class="brand-name" style="color:#fff;">Dunkin'</h2>
+        <p class="brand-handle" style="color:rgba(255,255,255,0.5);">"Instagram runs on Dunkin'" · @dunkin</p>
+        <div class="brand-score-row">
+          <span class="brand-score-big" style="color:#ff9f0a;">8</span>
+          <span class="brand-score-denom">/10</span>
+          <span class="brand-score-label" style="background:rgba(255,159,10,.15);color:#ff9f0a;">Strong</span>
+        </div>
+        <div class="brand-stats-row">
+          <div class="brand-stat"><span class="brand-stat-v">2.9M</span><span class="brand-stat-l">Followers</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">2,985</span><span class="brand-stat-l">Posts</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">6,046</span><span class="brand-stat-l">Following</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">Meme-first</span><span class="brand-stat-l">Strategy</span></div>
+        </div>
+        <div class="brand-analysis" style="color:rgba(255,255,255,0.72);">
+          <p>Dunkin' is doing something most legacy food brands can't pull off — they sound like they're run by <strong>actual Gen Z humans who use the internet,</strong> not a social media agency presenting monthly reports. Every post feels written by someone who genuinely enjoys being online, and that authenticity is the entire strategy.</p>
+          <p>The "Dirty Soda" campaign is a perfect example. "A dirty f**kin' drink," "send this to someone who did you dirty," "if you like dirty stuff." They're using word-censorship as a creative device — people fill in the blank themselves, which drives engagement without Dunkin having to ask for it. That's <strong>platform-native thinking.</strong></p>
+          <p>Their bio — "Instagram runs on Dunkin'" — turns a 70-year-old tagline into a platform-aware joke. That's not a coincidence. Someone at Dunkin' understands that the medium is part of the message.</p>
+          <p>Where do they lose points? The content is almost entirely meme-format stills. They're leaving a significant Reels opportunity on the table, and there's room to push even further with video given how strong their written voice already is.</p>
+        </div>
+      </div>
+      <div class="brand-right reveal reveal-delay-2">
+        <div style="border-radius:18px;overflow:hidden;margin-bottom:20px;background:linear-gradient(135deg,#FF671F 0%,#c8004a 100%);padding:2px;">
+  <div style="border-radius:16px;background:#0d0d0d;padding:28px 24px;">
+
+    <!-- Top row: handle + strategy -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:.5px;">@dunkin</span>
+      <span style="font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;">Meme-First</span>
+    </div>
+
+    <!-- Big score -->
+    <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:6px;">
+      <span style="font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;font-size:80px;font-weight:600;line-height:1;letter-spacing:-3px;color:#ff9f0a;">8</span>
+      <span style="font-size:24px;font-weight:400;color:rgba(255,255,255,0.25);">/10</span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#ff9f0a;background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;margin-left:4px;align-self:center;">STRONG</span>
+    </div>
+
+    <!-- Benchmark bar -->
+    <div style="margin-bottom:24px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.5px;">vs Red Bull benchmark</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);">80%</span>
+      </div>
+      <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+        <div style="height:100%;width:80%;background:linear-gradient(90deg,#FF671F,#ff9f0a);border-radius:2px;transition:width .8s ease;"></div>
+      </div>
+    </div>
+
+    <!-- Stats grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">2.9M</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Followers</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">2,985</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Posts</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">6,046</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Following</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+        <div class="scorecard">
+          <p class="scorecard-title">Score Breakdown</p>
+          <div class="score-row"><span class="score-label">Content quality</span><div class="score-track"><div class="score-fill" style="width:80%;"></div></div><span class="score-val">8</span></div>
+          <div class="score-row"><span class="score-label">Audience understanding</span><div class="score-track"><div class="score-fill" style="width:100%;"></div></div><span class="score-val">10</span></div>
+          <div class="score-row"><span class="score-label">Brand consistency</span><div class="score-track"><div class="score-fill" style="width:90%;"></div></div><span class="score-val">9</span></div>
+          <div class="score-row"><span class="score-label">Community</span><div class="score-track"><div class="score-fill" style="width:80%;"></div></div><span class="score-val">8</span></div>
+          <div class="score-row"><span class="score-label">Strategic vision</span><div class="score-track"><div class="score-fill" style="width:60%;"></div></div><span class="score-val">6</span></div>
+        </div>
+        <div class="brand-links">
+          <a href="https://www.instagram.com/dunkin/" target="_blank" class="link-ig">View @dunkin ↗</a>
+          <a href="https://www.dunkindonuts.com" target="_blank" class="link-web">dunkindonuts.com ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="verdict-band">
+    <div class="brand-wrap">
+      <p class="verdict-eyebrow">Bottom Line</p>
+      <p class="verdict-text">Dunkin' is the best example of a legacy brand reinventing its voice for a new generation. The lesson: <strong>you don't have to change what you sell — you have to change how you talk about it.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- CHICK-FIL-A -->
+<section class="brand-section tile-dark2" id="chickfila">
+  <div class="brand-wrap">
+    <div class="brand-header">
+      <div class="reveal">
+        <p class="brand-eyebrow" style="color:var(--blue-dark);">Brand 03 · Biggest Gap</p>
+        <h2 class="brand-name" style="color:#fff;">Chick-fil-A</h2>
+        <p class="brand-handle" style="color:rgba(255,255,255,0.5);">"Chicken. Joy. Delivered." · @chickfila</p>
+        <div class="brand-score-row">
+          <span class="brand-score-big" style="color:#e85d4a;">3</span>
+          <span class="brand-score-denom">/10</span>
+          <span class="brand-score-label" style="background:rgba(232,93,74,.15);color:#e85d4a;">Underperforming</span>
+        </div>
+        <div class="brand-stats-row">
+          <div class="brand-stat"><span class="brand-stat-v">2.1M</span><span class="brand-stat-l">Followers</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">1,772</span><span class="brand-stat-l">Posts</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">266</span><span class="brand-stat-l">Following</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">Corporate</span><span class="brand-stat-l">Strategy</span></div>
+        </div>
+        <div class="brand-analysis" style="color:rgba(255,255,255,0.72);">
+          <p>This one hurts because Chick-fil-A has more untapped Instagram potential than any brand in this audit. Every teenager and young adult in America has a relationship with this brand. The sauce has memes. The "my pleasure" response has memes. The Sunday closings have memes. <strong>None of that cultural capital is showing up on their Instagram.</strong></p>
+          <p>What you see instead is a corporate bulletin board. Employee spotlights. Scholarship announcements. Product shots approved by three layers of legal. The photography is actually beautiful — clean, well-lit, professional — but completely passive. It talks at you instead of with you.</p>
+          <p>The most damning number: they're following only 266 accounts. That tells you everything. <strong>They're broadcasting, not listening.</strong> They're not part of the conversation — they're standing next to it.</p>
+          <p>The content writes itself. "My pleasure" moments. Waffle fry content. Behind-the-counter culture. The chaos of a Monday morning drive-through. Someone else is making all that content and getting the engagement while Chick-fil-A posts an employee photo. This is <strong>the biggest gap between brand love and Instagram execution I've ever seen.</strong></p>
+        </div>
+      </div>
+      <div class="brand-right reveal reveal-delay-2">
+        <div style="border-radius:18px;overflow:hidden;margin-bottom:20px;background:linear-gradient(135deg,#E51636 0%,#7a0010 100%);padding:2px;">
+  <div style="border-radius:16px;background:#0d0d0d;padding:28px 24px;">
+
+    <!-- Top row: handle + strategy -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:.5px;">@chickfila</span>
+      <span style="font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;">Corporate Safe</span>
+    </div>
+
+    <!-- Big score -->
+    <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:6px;">
+      <span style="font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;font-size:80px;font-weight:600;line-height:1;letter-spacing:-3px;color:#e85d4a;">3</span>
+      <span style="font-size:24px;font-weight:400;color:rgba(255,255,255,0.25);">/10</span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#e85d4a;background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;margin-left:4px;align-self:center;">UNDERPERFORMING</span>
+    </div>
+
+    <!-- Benchmark bar -->
+    <div style="margin-bottom:24px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.5px;">vs Red Bull benchmark</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);">30%</span>
+      </div>
+      <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+        <div style="height:100%;width:30%;background:linear-gradient(90deg,#E51636,#e85d4a);border-radius:2px;transition:width .8s ease;"></div>
+      </div>
+    </div>
+
+    <!-- Stats grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">2.1M</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Followers</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">1,772</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Posts</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">266</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Following</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+        <div class="scorecard">
+          <p class="scorecard-title">Score Breakdown</p>
+          <div class="score-row"><span class="score-label">Content quality</span><div class="score-track"><div class="score-fill" style="width:50%;background:#e85d4a;"></div></div><span class="score-val">5</span></div>
+          <div class="score-row"><span class="score-label">Audience understanding</span><div class="score-track"><div class="score-fill" style="width:20%;background:#e85d4a;"></div></div><span class="score-val">2</span></div>
+          <div class="score-row"><span class="score-label">Brand consistency</span><div class="score-track"><div class="score-fill" style="width:60%;background:#e85d4a;"></div></div><span class="score-val">6</span></div>
+          <div class="score-row"><span class="score-label">Community</span><div class="score-track"><div class="score-fill" style="width:10%;background:#e85d4a;"></div></div><span class="score-val">1</span></div>
+          <div class="score-row"><span class="score-label">Strategic vision</span><div class="score-track"><div class="score-fill" style="width:20%;background:#e85d4a;"></div></div><span class="score-val">2</span></div>
+        </div>
+        <div class="brand-links">
+          <a href="https://www.instagram.com/chickfila/" target="_blank" class="link-ig">View @chickfila ↗</a>
+          <a href="https://www.chick-fil-a.com" target="_blank" class="link-web">chick-fil-a.com ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="verdict-band">
+    <div class="brand-wrap">
+      <p class="verdict-eyebrow">Bottom Line</p>
+      <p class="verdict-text">Chick-fil-A is sitting on a goldmine and doing nothing with it. <strong>Hire three Gen Z creators, give them kitchen access, and watch what happens.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- CELSIUS -->
+<section class="brand-section tile-dark3" id="celsius">
+  <div class="brand-wrap">
+    <div class="brand-header">
+      <div class="reveal">
+        <p class="brand-eyebrow" style="color:var(--blue-dark);">Brand 04 · Premium Mismatch</p>
+        <h2 class="brand-name" style="color:#fff;">Celsius</h2>
+        <p class="brand-handle" style="color:rgba(255,255,255,0.5);">"CELSIUS. LIVE. FIT. GO." · @celsiusofficial</p>
+        <div class="brand-score-row">
+          <span class="brand-score-big" style="color:#c9a84c;">5</span>
+          <span class="brand-score-denom">/10</span>
+          <span class="brand-score-label" style="background:rgba(201,168,76,.12);color:#c9a84c;">Average</span>
+        </div>
+        <div class="brand-stats-row">
+          <div class="brand-stat"><span class="brand-stat-v">1.1M</span><span class="brand-stat-l">Followers</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">3,113</span><span class="brand-stat-l">Posts</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">179</span><span class="brand-stat-l">Following</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">Events-first</span><span class="brand-stat-l">Strategy</span></div>
+        </div>
+        <div class="brand-analysis" style="color:rgba(255,255,255,0.72);">
+          <p>Celsius is arguably the <strong>number two energy drink in the United States by retail sales.</strong> So when you see 1.1 million followers, that number is almost insulting relative to their actual market position.</p>
+          <p>The Instagram is genuinely well-executed visually. Clean product shots, strong teal/cyan color system, event coverage from the Celsius Soccer Classic. They're buying lifestyle credibility through events and the feed reflects that premium positioning.</p>
+          <p>But here's my core critique: <strong>they're winning at retail, not at community.</strong> People buy Celsius at Target and the gym but aren't following the page. That disconnect tells me Celsius hasn't figured out how to convert buyers into followers. The Instagram feels made for people who already know the brand, not for discovery.</p>
+          <p>They also follow only 179 accounts — the lowest of any brand here. For a brand at their scale, 1.1M followers should be 5M+. The premium events strategy is smart for positioning but comes at the cost of the organic growth that community engagement drives.</p>
+        </div>
+      </div>
+      <div class="brand-right reveal reveal-delay-2">
+        <div style="border-radius:18px;overflow:hidden;margin-bottom:20px;background:linear-gradient(135deg,#0096c7 0%,#03045e 100%);padding:2px;">
+  <div style="border-radius:16px;background:#0d0d0d;padding:28px 24px;">
+
+    <!-- Top row: handle + strategy -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:.5px;">@celsiusofficial</span>
+      <span style="font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;">Events-First</span>
+    </div>
+
+    <!-- Big score -->
+    <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:6px;">
+      <span style="font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;font-size:80px;font-weight:600;line-height:1;letter-spacing:-3px;color:#c9a84c;">5</span>
+      <span style="font-size:24px;font-weight:400;color:rgba(255,255,255,0.25);">/10</span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#c9a84c;background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;margin-left:4px;align-self:center;">AVERAGE</span>
+    </div>
+
+    <!-- Benchmark bar -->
+    <div style="margin-bottom:24px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.5px;">vs Red Bull benchmark</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);">50%</span>
+      </div>
+      <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+        <div style="height:100%;width:50%;background:linear-gradient(90deg,#0096c7,#c9a84c);border-radius:2px;transition:width .8s ease;"></div>
+      </div>
+    </div>
+
+    <!-- Stats grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">1.1M</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Followers</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">3,113</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Posts</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">179</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Following</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+        <div class="scorecard">
+          <p class="scorecard-title">Score Breakdown</p>
+          <div class="score-row"><span class="score-label">Content quality</span><div class="score-track"><div class="score-fill" style="width:70%;"></div></div><span class="score-val">7</span></div>
+          <div class="score-row"><span class="score-label">Audience understanding</span><div class="score-track"><div class="score-fill" style="width:50%;"></div></div><span class="score-val">5</span></div>
+          <div class="score-row"><span class="score-label">Brand consistency</span><div class="score-track"><div class="score-fill" style="width:80%;"></div></div><span class="score-val">8</span></div>
+          <div class="score-row"><span class="score-label">Community</span><div class="score-track"><div class="score-fill" style="width:30%;"></div></div><span class="score-val">3</span></div>
+          <div class="score-row"><span class="score-label">Strategic vision</span><div class="score-track"><div class="score-fill" style="width:40%;"></div></div><span class="score-val">4</span></div>
+        </div>
+        <div class="brand-links">
+          <a href="https://www.instagram.com/celsiusofficial/" target="_blank" class="link-ig">View @celsiusofficial ↗</a>
+          <a href="https://www.celsius.com" target="_blank" class="link-web">celsius.com ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="verdict-band">
+    <div class="brand-wrap">
+      <p class="verdict-eyebrow">Bottom Line</p>
+      <p class="verdict-text">Celsius proves you can be a market leader with a mediocre Instagram. <strong>The question they need to answer: why would someone follow Celsius rather than just buy it?</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- OWALA -->
+<section class="brand-section tile-dark" id="owala">
+  <div class="brand-wrap">
+    <div class="brand-header">
+      <div class="reveal">
+        <p class="brand-eyebrow" style="color:var(--blue-dark);">Brand 05 · Beautiful But Passive</p>
+        <h2 class="brand-name" style="color:#fff;">Owala</h2>
+        <p class="brand-handle" style="color:rgba(255,255,255,0.5);">"Where Boring Ends." · @owala</p>
+        <div class="brand-score-row">
+          <span class="brand-score-big" style="color:#c9a84c;">6</span>
+          <span class="brand-score-denom">/10</span>
+          <span class="brand-score-label" style="background:rgba(201,168,76,.1);color:#c9a84c;">Good, Not Great</span>
+        </div>
+        <div class="brand-stats-row">
+          <div class="brand-stat"><span class="brand-stat-v">1M</span><span class="brand-stat-l">Followers</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">1,010</span><span class="brand-stat-l">Posts</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">102</span><span class="brand-stat-l">Following</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">Product catalog</span><span class="brand-stat-l">Strategy</span></div>
+        </div>
+        <div class="brand-analysis" style="color:rgba(255,255,255,0.72);">
+          <p>Owala's Instagram is the most visually satisfying of everything in this audit. Hot pink on salmon. Neon yellow against warm tan. Deep navy with chrome accents. The color work is genuinely exceptional — every product shot looks like a still from a fashion editorial. <strong>If Instagram was judged on aesthetics alone, Owala ranks second behind Red Bull.</strong></p>
+          <p>The bio is sharp too: "Where Boring Ends." Three words that position them against Stanley and Hydro Flask without naming either. Their 1M followers from 1,010 posts is a better follower-to-post ratio than almost anyone else here — every piece of content is earning its keep.</p>
+          <p>Here's the tension: Owala has cult status on TikTok. The "Owala obsession" content is everywhere — people filming their collections, doing unboxings, carrying them daily. <strong>That community is being built by consumers, not by Owala themselves.</strong> The Instagram is essentially a product catalog. Beautiful, intentional — but passive.</p>
+          <p>The fans are already there. They just need to be invited in. If Owala leaned into the community the way their customers already behave, this could be a 5M+ account inside of two years.</p>
+        </div>
+      </div>
+      <div class="brand-right reveal reveal-delay-2">
+        <div style="border-radius:18px;overflow:hidden;margin-bottom:20px;background:linear-gradient(135deg,#1B4DFF 0%,#0a0a40 100%);padding:2px;">
+  <div style="border-radius:16px;background:#0d0d0d;padding:28px 24px;">
+
+    <!-- Top row: handle + strategy -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:.5px;">@owala</span>
+      <span style="font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;">Product Catalog</span>
+    </div>
+
+    <!-- Big score -->
+    <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:6px;">
+      <span style="font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;font-size:80px;font-weight:600;line-height:1;letter-spacing:-3px;color:#c9a84c;">6</span>
+      <span style="font-size:24px;font-weight:400;color:rgba(255,255,255,0.25);">/10</span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#c9a84c;background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;margin-left:4px;align-self:center;">GOOD NOT GREAT</span>
+    </div>
+
+    <!-- Benchmark bar -->
+    <div style="margin-bottom:24px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.5px;">vs Red Bull benchmark</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);">60%</span>
+      </div>
+      <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+        <div style="height:100%;width:60%;background:linear-gradient(90deg,#1B4DFF,#c9a84c);border-radius:2px;transition:width .8s ease;"></div>
+      </div>
+    </div>
+
+    <!-- Stats grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">1M</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Followers</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">1,010</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Posts</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">102</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Following</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+        <div class="scorecard">
+          <p class="scorecard-title">Score Breakdown</p>
+          <div class="score-row"><span class="score-label">Content quality</span><div class="score-track"><div class="score-fill" style="width:90%;"></div></div><span class="score-val">9</span></div>
+          <div class="score-row"><span class="score-label">Audience understanding</span><div class="score-track"><div class="score-fill" style="width:50%;"></div></div><span class="score-val">5</span></div>
+          <div class="score-row"><span class="score-label">Brand consistency</span><div class="score-track"><div class="score-fill" style="width:100%;"></div></div><span class="score-val">10</span></div>
+          <div class="score-row"><span class="score-label">Community</span><div class="score-track"><div class="score-fill" style="width:20%;"></div></div><span class="score-val">2</span></div>
+          <div class="score-row"><span class="score-label">Strategic vision</span><div class="score-track"><div class="score-fill" style="width:50%;"></div></div><span class="score-val">5</span></div>
+        </div>
+        <div class="brand-links">
+          <a href="https://www.instagram.com/owala/" target="_blank" class="link-ig">View @owala ↗</a>
+          <a href="https://www.owalalife.com" target="_blank" class="link-web">owalalife.com ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="verdict-band">
+    <div class="brand-wrap">
+      <p class="verdict-eyebrow">Bottom Line</p>
+      <p class="verdict-text">Beautiful content and community building are two completely different skills. <strong>The product is already cult-level. The Instagram just needs to catch up to what consumers are already creating around it.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- COSTA -->
+<section class="brand-section tile-dark2" id="costa">
+  <div class="brand-wrap">
+    <div class="brand-header">
+      <div class="reveal">
+        <p class="brand-eyebrow" style="color:var(--blue-dark);">Brand 06 · Right Fit, Right Audience</p>
+        <h2 class="brand-name" style="color:#fff;">Costa Sunglasses</h2>
+        <p class="brand-handle" style="color:rgba(255,255,255,0.5);">"Born on the water in 1983." · @costasunglasses</p>
+        <div class="brand-score-row">
+          <span class="brand-score-big" style="color:#ff9f0a;">7</span>
+          <span class="brand-score-denom">/10</span>
+          <span class="brand-score-label" style="background:rgba(255,159,10,.15);color:#ff9f0a;">Well-Calibrated</span>
+        </div>
+        <div class="brand-stats-row">
+          <div class="brand-stat"><span class="brand-stat-v">565K</span><span class="brand-stat-l">Followers</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">3,954</span><span class="brand-stat-l">Posts</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">494</span><span class="brand-stat-l">Following</span></div>
+          <div class="brand-stat"><span class="brand-stat-v">Storytelling</span><span class="brand-stat-l">Strategy</span></div>
+        </div>
+        <div class="brand-analysis" style="color:rgba(255,255,255,0.72);">
+          <p>I'm going to say something counterintuitive: <strong>Costa's 565K followers is not a weakness. It's evidence of precision.</strong> Their target customer is not a 19-year-old scrolling through memes. It's a 42-year-old who wakes up at 4:30am to be on the water before sunrise. That person doesn't use Instagram the same way.</p>
+          <p>The bio — "Born on the water in 1983. For those who need water to breathe." — is identity language. Not describing a product. Describing a person. If that sentence resonates with you, you're the customer. If it doesn't, Costa doesn't want your follow anyway. That kind of intentional audience exclusion is a sign of genuine brand maturity.</p>
+          <p>The content is cinematic and patient. Long rods and tarpon jumping. Mothers and sons tying flies together. Open ocean swells from the deck of a boat. The pacing is slow by Instagram standards, but it's <strong>perfect for an audience that values the meditative quality of being on the water.</strong></p>
+          <p>Those 565K followers are buying $200 sunglasses repeatedly, tagging Costa in their catches, and advocating to their fishing buddies. The right 565K beats the wrong 2M every time.</p>
+        </div>
+      </div>
+      <div class="brand-right reveal reveal-delay-2">
+        <div style="border-radius:18px;overflow:hidden;margin-bottom:20px;background:linear-gradient(135deg,#0077b6 0%,#003D7C 100%);padding:2px;">
+  <div style="border-radius:16px;background:#0d0d0d;padding:28px 24px;">
+
+    <!-- Top row: handle + strategy -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:.5px;">@costasunglasses</span>
+      <span style="font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;">Storytelling</span>
+    </div>
+
+    <!-- Big score -->
+    <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:6px;">
+      <span style="font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;font-size:80px;font-weight:600;line-height:1;letter-spacing:-3px;color:#ff9f0a;">7</span>
+      <span style="font-size:24px;font-weight:400;color:rgba(255,255,255,0.25);">/10</span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#ff9f0a;background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px;margin-left:4px;align-self:center;">WELL-CALIBRATED</span>
+    </div>
+
+    <!-- Benchmark bar -->
+    <div style="margin-bottom:24px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.5px;">vs Red Bull benchmark</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);">70%</span>
+      </div>
+      <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+        <div style="height:100%;width:70%;background:linear-gradient(90deg,#0077b6,#ff9f0a);border-radius:2px;transition:width .8s ease;"></div>
+      </div>
+    </div>
+
+    <!-- Stats grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">565K</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Followers</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">3,954</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Posts</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+        <span style="font-size:18px;font-weight:600;color:#fff;display:block;font-feature-settings:'tnum';">494</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;display:block;letter-spacing:.3px;">Following</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+        <div class="scorecard">
+          <p class="scorecard-title">Score Breakdown</p>
+          <div class="score-row"><span class="score-label">Content quality</span><div class="score-track"><div class="score-fill" style="width:80%;"></div></div><span class="score-val">8</span></div>
+          <div class="score-row"><span class="score-label">Audience understanding</span><div class="score-track"><div class="score-fill" style="width:100%;"></div></div><span class="score-val">10</span></div>
+          <div class="score-row"><span class="score-label">Brand consistency</span><div class="score-track"><div class="score-fill" style="width:90%;"></div></div><span class="score-val">9</span></div>
+          <div class="score-row"><span class="score-label">Community</span><div class="score-track"><div class="score-fill" style="width:50%;"></div></div><span class="score-val">5</span></div>
+          <div class="score-row"><span class="score-label">Strategic vision</span><div class="score-track"><div class="score-fill" style="width:60%;"></div></div><span class="score-val">6</span></div>
+        </div>
+        <div class="brand-links">
+          <a href="https://www.instagram.com/costasunglasses/" target="_blank" class="link-ig">View @costasunglasses ↗</a>
+          <a href="https://www.costadelmar.com" target="_blank" class="link-web">costadelmar.com ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="verdict-band">
+    <div class="brand-wrap">
+      <p class="verdict-eyebrow">Bottom Line</p>
+      <p class="verdict-text">Costa earns their 7 not despite their smaller following, but because of the quality of it. <strong>The right 565K beats the wrong 2M every time.</strong> Costa knows their person, and they talk to that person every single day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TAKEAWAYS -->
+<section class="takeaways" id="takeaways">
+  <div style="max-width:1200px;margin:0 auto;">
+    <p class="section-eyebrow reveal">Final Analysis</p>
+    <h2 class="section-title reveal">What This Audit Actually Teaches Us</h2>
+    <p class="section-sub reveal">After six brands, six strategies, and six honest grades — a few things become undeniable. Instagram success isn't universal. It's contextual.</p>
+  </div>
+  <div class="takeaway-grid" style="max-width:1200px;margin:0 auto 2px;">
+    <div class="takeaway-card reveal"><div class="takeaway-num">01</div><h3>Don't sell the product — sell the world</h3><p>Red Bull almost never talks about energy drinks. They talk about what's possible when you have the energy. The product is subtext. The world is the text.</p></div>
+    <div class="takeaway-card reveal reveal-delay-1"><div class="takeaway-num">02</div><h3>Sound like your audience, not your legal team</h3><p>Dunkin' wins because every caption sounds like it was written by someone who loves being online. Chick-fil-A loses because every caption feels approved by three VPs.</p></div>
+    <div class="takeaway-card reveal reveal-delay-2"><div class="takeaway-num">03</div><h3>Follower count is the wrong metric</h3><p>Costa has 565K followers and one of the most loyal customer bases in their category. Chick-fil-A has 2.1M and near-zero engagement. Quality beats quantity every time.</p></div>
+    <div class="takeaway-card reveal reveal-delay-3"><div class="takeaway-num">04</div><h3>Beautiful content ≠ community building</h3><p>Owala's feed is stunning. Their community is being built by consumers on TikTok without their help. Great aesthetics and great strategy are two different things.</p></div>
+    <div class="takeaway-card reveal reveal-delay-1"><div class="takeaway-num">05</div><h3>Market position ≠ social success</h3><p>Celsius is #2 in energy drinks by retail sales. They have 1.1M Instagram followers. Those two facts have almost nothing to do with each other.</p></div>
+    <div class="takeaway-card reveal reveal-delay-2"><div class="takeaway-num">06</div><h3>Know how your audience actually uses the internet</h3><p>Costa's customer watches 45-minute fishing videos on YouTube. Dunkin's scrolls memes at 11pm. Same platform, completely different behavior. The best brands understand this.</p></div>
+  </div>
+  <div class="comparison-wrap" style="max-width:1200px;margin:0 auto;">
+    <table class="comp-table">
+      <thead><tr><th>Brand</th><th>Followers</th><th>Strategy</th><th>Biggest Strength</th><th>Biggest Gap</th><th>Score</th></tr></thead>
+      <tbody>
+        <tr><td class="comp-brand">Red Bull</td><td>32.7M</td><td>Media company</td><td>Content IS the product</td><td>Nothing — this is the benchmark</td><td class="comp-score" style="color:#4caf7d;">10/10</td></tr>
+        <tr><td class="comp-brand">Dunkin'</td><td>2.9M</td><td>Community/humor</td><td>Authentic Gen Z voice</td><td>Underusing Reels/video</td><td class="comp-score" style="color:#ff9f0a;">8/10</td></tr>
+        <tr><td class="comp-brand">Costa</td><td>565K</td><td>Lifestyle storytelling</td><td>Perfect audience calibration</td><td>Room to grow without losing identity</td><td class="comp-score" style="color:#ff9f0a;">7/10</td></tr>
+        <tr><td class="comp-brand">Owala</td><td>1M</td><td>Product catalog</td><td>Best visual identity of the six</td><td>Letting community happen elsewhere</td><td class="comp-score" style="color:#c9a84c;">6/10</td></tr>
+        <tr><td class="comp-brand">Celsius</td><td>1.1M</td><td>Premium/events</td><td>Strong brand positioning</td><td>Followers don't match market share</td><td class="comp-score" style="color:#c9a84c;">5/10</td></tr>
+        <tr><td class="comp-brand">Chick-fil-A</td><td>2.1M</td><td>Corporate safe</td><td>Massive existing brand love</td><td>Completely missing the cultural moment</td><td class="comp-score" style="color:#e85d4a;">3/10</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="author-section">
+  <div class="reveal">
+    <p class="author-eyebrow">About the Author</p>
+    <h2 class="author-name">Yonis Velasquez</h2>
+    <p class="author-title">Marketing Analytics · Cedarville University · Class of 2026</p>
+    <p class="author-bio">I'm an incoming senior studying Marketing Analytics, a collegiate soccer player, and someone who spends a lot of time thinking about why some brands feel inevitable and others feel forgettable. I'm bilingual in English and Spanish, I use AI tools daily as part of my workflow, and I built this audit because the best way to show you can think is to actually think. This is my judgment. Based on real observation, real data, and real opinions. I'll defend every grade.</p>
+    <div class="author-links">
+      <a href="https://yonisv.github.io/yonis-portfolio/" target="_blank" class="author-link">Portfolio ↗</a>
+      <a href="https://www.linkedin.com/in/yonis-velasquez-quezada" target="_blank" class="author-link">LinkedIn ↗</a>
+      <a href="https://github.com/yonisv" target="_blank" class="author-link">GitHub ↗</a>
+      <a href="mailto:yonisvelasquez18@gmail.com" class="author-link">Email ↗</a>
+    </div>
+  </div>
+  <div class="reveal reveal-delay-2">
+    <div class="work-card">
+      <a href="https://yonisv.github.io/BeasleyMedia/" target="_blank" class="work-item"><div><p class="work-title">Beasley Media Group Audit</p><p class="work-sub">Social media brand audit · Naples, FL</p></div><span class="work-arrow">↗</span></a>
+      <a href="https://yonisv.github.io/nike-sales-analysis/" target="_blank" class="work-item"><div><p class="work-title">Nike FY2024 Sales Analysis</p><p class="work-sub">$51.4B data analysis · Python & Pandas</p></div><span class="work-arrow">↗</span></a>
+      <a href="https://docs.google.com/presentation/d/1Kjmw4UPd8NvA1k8ibpydtOo44VMc0U0H8RmoBjs6ZAk/edit?usp=sharing" target="_blank" class="work-item"><div><p class="work-title">Raising Cane's Campaign</p><p class="work-sub">$10M integrated marketing campaign</p></div><span class="work-arrow">↗</span></a>
+      <a href="https://yonisv.github.io/yonis-portfolio/" target="_blank" class="work-item"><div><p class="work-title">Full Portfolio</p><p class="work-sub">yonisv.github.io/yonis-portfolio</p></div><span class="work-arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Yonis Velasquez · Independent Analysis · All brand logos and trademarks belong to their respective owners · Not affiliated with any audited brand</p>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+    }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Animate score bars on reveal
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.score-fill').forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(()=>{ bar.style.width = w; },100);
+      });
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.scorecard').forEach(el => barObserver.observe(el));
+
+// Smooth nav highlight
+window.addEventListener('scroll',()=>{
+  const sections=['redbull','dunkin','chickfila','celsius','owala','costa','takeaways'];
+  const scrollY = window.scrollY + 100;
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){
+      const top=el.offsetTop;
+      const bot=top+el.offsetHeight;
+      const link=document.querySelector(`a[href="#${id}"]`);
+      if(link && scrollY>=top && scrollY<bot){
+        link.style.color='#fff';
+      } else if(link){
+        link.style.color='';
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
